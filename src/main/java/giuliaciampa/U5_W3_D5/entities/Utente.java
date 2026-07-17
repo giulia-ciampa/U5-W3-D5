@@ -25,6 +25,12 @@ public class Utente implements UserDetails {
     @Setter(AccessLevel.NONE)
     private UUID id;
 
+    @Column(nullable = false, length = 20)
+    private String nome;
+
+    @Column(nullable = false, length = 20)
+    private String cognome;
+
     @Column(unique = true, nullable = false, length = 50)
     private String email;
 
@@ -32,7 +38,7 @@ public class Utente implements UserDetails {
     @JsonIgnore
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
     private Ruolo ruolo;
 
