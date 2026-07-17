@@ -1,5 +1,6 @@
 package giuliaciampa.U5_W3_D5.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class Evento {
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
+    @JsonIgnoreProperties({"credentialsNonExpired", "enabled", "accountNonExpired", "authorities", "accountNonLocked"})
     private UUID id;
 
     @Column(nullable = false, length = 60)

@@ -31,9 +31,21 @@ public class ErrorsHanlder {
         return new ErrorsDTO(e.getMessage(), LocalDateTime.now());
     }
 
+    @ExceptionHandler(DuplicateRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorsDTO handleDuplicateRequestException(DuplicateRequestException e) {
+        return new ErrorsDTO(e.getMessage(), LocalDateTime.now());
+    }
+
     @ExceptionHandler(UnauthorizedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ErrorsDTO handleUnauthorizedException(UnauthorizedException e) {
+        return new ErrorsDTO(e.getMessage(), LocalDateTime.now());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorsDTO handleAccessDeniedException(AccessDeniedException e) {
         return new ErrorsDTO(e.getMessage(), LocalDateTime.now());
     }
 

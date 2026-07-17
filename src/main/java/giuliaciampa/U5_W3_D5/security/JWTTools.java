@@ -1,12 +1,14 @@
 package giuliaciampa.U5_W3_D5.security;
 
 import giuliaciampa.U5_W3_D5.entities.Utente;
+import giuliaciampa.U5_W3_D5.exceptions.UnauthorizedException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Component
 public class JWTTools {
@@ -27,5 +29,20 @@ public class JWTTools {
                 .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
                 .compact();
     }
+
+    //VERIFICA TOKEN
+    public void verifyToken(String token) {
+        try {
+            Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parse(token);
+        } catch (Exception ex) {
+            throw new UnauthorizedException("Ci sono problemi con il token, rifare il login!");
+        }
+    }
+
+    //ESTRAI ID DAL TOKEN
+    public UUID extractIdFromToken(String token) {
+        return UUID.fromString(Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parseSignedClaims(token).getPayload().getSubject());
+    }
+
 }
 
