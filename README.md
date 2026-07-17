@@ -1,2 +1,8 @@
 ![Schema Database](screenshots/DRAWSQL.png)
 ![Diagramma_pgAdmin](screenshots/diagrammaPgAdmin.png)
+![login](screenshots/login.png)
+![organizzatore](screenshots/organizzatore_impostato.png)
+![post dell' evento](screenshots/post%20evento.png)
+![put dell' evento](screenshots/put.png)
+![delete evento](screenshots/delete%20evento.png)
+![delete prenotazione](screenshots/prenotazione.png)
