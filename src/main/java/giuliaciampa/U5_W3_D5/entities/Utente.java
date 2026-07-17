@@ -43,10 +43,12 @@ public class Utente implements UserDetails {
     private Ruolo ruolo;
 
     //COSTRUTTORE
-    public Utente(String email, String password) {
+    public Utente(String email, String password, String nome, String cognome) {
         this.email = email;
         this.password = password;
         this.ruolo = Ruolo.UTENTE_NORMALE;
+        this.nome = nome;
+        this.cognome = cognome;
     }
 
     //COSTRUTTORE VUOTO
